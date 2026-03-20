@@ -151,8 +151,8 @@ function renderResult() {
                 <p style="font-weight: bold; margin-bottom: 1.5rem; font-size: 1.1rem; line-height:1.6;">
                     この課題を根底から解決する<br class="sp-only">『次の一手（23ステップのうち3つ）』の<br class="pc-only">具体的な実行手順は、LINEでお渡しします。
                 </p>
-                <a href="https://lin.ee/6UKnXnXL" target="_blank" rel="noopener noreferrer" class="btn-primary" style="background: #06C755; color: #fff; display: block; text-align: center; text-decoration: none; box-sizing: border-box; border: none; box-shadow: 0 4px 15px rgba(6, 199, 85, 0.3); font-size: 1.2rem; padding: 1.2rem; width: 100%; max-width: 400px; margin: 0 auto;">
-                    解決策の詳細はLINEで受け取る
+                <a href="https://liff.line.me/2009547940-QUv7dCjJ?unique_key=5T0ZzL&ts=1773995324" class="btn-primary" style="background: #06C755; color: #fff; display: block; text-align: center; text-decoration: none; box-sizing: border-box; border: none; box-shadow: 0 4px 15px rgba(6, 199, 85, 0.3); font-size: 1.2rem; padding: 1.2rem; width: 100%; max-width: 400px; margin: 0 auto;">
+                    診断を受けて特典を受け取る
                 </a>
             </div>
         </div>
