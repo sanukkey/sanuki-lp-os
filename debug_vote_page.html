@@ -1,0 +1,855 @@
+<!DOCTYPE html><html lang="jp"><head>
+<meta charset="utf-8">
+<meta name="contextPath" content="/tohyo-ap-pctohyo-web">
+<meta name="_csrf_token" content="c1d6b922-ce2e-4380-8ed0-35373cca94f8">
+<meta name="_csrf_headerName" content="X-CSRF-TOKEN">
+<meta name="centerNo" content="apA42">
+<title>BOAT RACE投票サイト（PC版）</title>
+<meta name="keywords" content="">
+<meta name="description" content="全国２４ボートレース場の舟券が100円からご購入いただけます。入会金、年会費無料！いつでも、どこでも気軽にボートレースをお楽しみください！">
+<meta name="viewport" content="width=1100">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
+
+<link rel="stylesheet" type="text/css" href="/tohyo-ap-pctohyo-web/resources/css/default.css?02173999">
+<link rel="stylesheet" type="text/css" href="/tohyo-ap-pctohyo-web/resources/css/common.css?02173999">
+<link rel="stylesheet" type="text/css" href="/tohyo-ap-pctohyo-web/resources/css/common_style.css?02173999">
+<link rel="stylesheet" type="text/css" href="/tohyo-ap-pctohyo-web/resources/css/overlay.css?02173999">
+<link rel="stylesheet" type="text/css" href="/tohyo-ap-pctohyo-web/resources/css/error_pop.css?02173999">
+<link rel="stylesheet" type="text/css" href="/tohyo-ap-pctohyo-web/resources/css/screen.css?02173999">
+<link rel="stylesheet" type="text/css" href="/tohyo-ap-pctohyo-web/resources/css/popup.css?02173999">
+<link rel="stylesheet" type="text/css" href="/tohyo-ap-pctohyo-web/resources/css/jquery.mCustomScrollbar.css?02173999">
+<link rel="stylesheet" type="text/css" href="/tohyo-ap-pctohyo-web/resources/css/information.css?02173999">
+<link rel="stylesheet" type="text/css" href="/tohyo-ap-pctohyo-web/resources/css/bxslider.css?02173999">
+<link rel="stylesheet" type="text/css" href="/tohyo-ap-pctohyo-web/resources/css/index.css?02173999">
+<link rel="stylesheet" type="text/css" href="/tohyo-ap-pctohyo-web/resources/css/default.css?02173999">
+<link rel="stylesheet" type="text/css" href="/tohyo-ap-pctohyo-web/resources/css/common_style.css?02173999">
+<link rel="stylesheet" type="text/css" href="/tohyo-ap-pctohyo-web/resources/css/keyboard.css?02173999">
+<link rel="shortcut icon" href="/tohyo-ap-pctohyo-web/resources/images/common/favicon.png?02173999">
+<link rel="apple-touch-icon" href="/tohyo-ap-pctohyo-web/resources/images/common/favicon.png?02173999">
+<script type="text/javascript" async="" charset="utf-8" src="https://www.gstatic.com/recaptcha/releases/qm3PSRIx10pekcnS9DjGnjPW/recaptcha__ja.js" crossorigin="anonymous" integrity="sha384-4rGF83kC4gWZEMkWjoNV6SMmafgnO2wDxjnp9fjB6+eNRUQKIrb05XhkLTOz9vXD"></script><script src="/tohyo-ap-pctohyo-web/resources/lib/moment.js?02173999"></script>
+<script src="/tohyo-ap-pctohyo-web/resources/lib/jquery-2.1.4.js?02173999"></script>
+<script src="/tohyo-ap-pctohyo-web/resources/lib/jquery.bxslider.min.js?02173999"></script>
+<script src="/tohyo-ap-pctohyo-web/resources/lib/jquery.mCustomScrollbar.js?02173999"></script><script src="/tohyo-ap-pctohyo-web/resources/lib/jquery.mousewheel.min.js"></script>
+<script src="/tohyo-ap-pctohyo-web/resources/lib/jsrender.js?02173999"></script>
+<script src="/tohyo-ap-pctohyo-web/resources/js/boat.js?02173999"></script>
+<script src="/tohyo-ap-pctohyo-web/resources/js/fw/common_utils.js?02173999"></script>
+<script src="/tohyo-ap-pctohyo-web/resources/js/fw/event_handler.js?02173999"></script>
+<script src="/tohyo-ap-pctohyo-web/resources/js/fw/ajax.js?02173999"></script>
+<script src="/tohyo-ap-pctohyo-web/resources/js/fw/jsrender_converter.js?02173999"></script>
+<script src="/tohyo-ap-pctohyo-web/resources/js/fw/message.js?02173999"></script>
+<script src="/tohyo-ap-pctohyo-web/resources/js/fw/screen.js?02173999"></script>
+<script src="/tohyo-ap-pctohyo-web/resources/js/fw/screenId.js?02173999"></script>
+<script src="/tohyo-ap-pctohyo-web/resources/js/controller/key_controller.js?02173999"></script>
+<script src="/tohyo-ap-pctohyo-web/resources/js/controller/popup_controller.js?02173999"></script>
+<script src="/tohyo-ap-pctohyo-web/resources/js/controller/input_controller.js?02173999"></script>
+<script src="/tohyo-ap-pctohyo-web/resources/js/controller/login_controller.js?02173999"></script>
+<script src="/tohyo-ap-pctohyo-web/resources/js/service/login_service.js?02173999"></script>
+<script src="/tohyo-ap-pctohyo-web/resources/js/controller/notice_controller.js?02173999"></script>
+<script src="/tohyo-ap-pctohyo-web/resources/js/service/notice_service.js?02173999"></script>
+
+<script src="https://www.google.com/recaptcha/enterprise.js?render=6LcTx8ofAAAAAFXyEqQxzspb5Mxr-MoC3K26gkdj"></script>
+<style type="text/css">.grecaptcha-badge{visibility:hidden}</style>
+
+
+
+<script type="text/javascript">BOAT.code = {"ajax_timeout" : "30000","logout_no_args" : "","url_notice_001" : "/notice"}</script>
+
+<script type="text/javascript">BOAT.attribute.serverErrorCode='';</script>
+<script type="text/javascript">BOAT.attribute.serverErrorMessageParam='';</script>
+<script type="text/javascript">BOAT.attribute.isRecaptchaEnable=true;</script>
+<script type="text/javascript">BOAT.attribute.recaptchaSiteKey='6LcTx8ofAAAAAFXyEqQxzspb5Mxr-MoC3K26gkdj';</script>
+
+</head>
+<body id="top" style="-webkit-text-size-adjust: none;">
+  <div id="wrapper">
+    <header role="banner">
+      <div class="inner">
+        <h1>
+          <img src="/tohyo-ap-pctohyo-web/resources/images/index/logo02.png?02173999" width="547" height="44" alt="BOAT RACE　インターネット投票">
+        </h1>
+        
+        <ul class="clearfix">
+          <li class="btn btnHelp">
+            <a href="/tohyo-ap-pctohyo-web/help/contents.html" target="help" class="btnOver window">ヘルプ</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <!--/header-->
+    <div id="popupKeyboard" style="display:none"></div>
+    
+
+
+
+
+
+
+
+
+
+
+<script id="keyboardRender" type="text/x-jsrender">
+<div id="keyboard">
+  <p>下のボタンより入力してください</p>
+  {{if isNumericKey}}
+  <div id="tenki_board">
+    <div class="numberBoard">
+      <strong id="{{if isNumericKey}}inputTarget{{/if}}" class="{{if isMask}}leftAlign{{/if}}"></strong>
+      <span>{{>amountLabel}}</span>
+    </div>
+    <ul id="tenkey" class="clearfix">
+      <li class="{{if isNumericKey}}registerKey{{/if}}"><span>1</span></li>
+      <li class="{{if isNumericKey}}registerKey{{/if}}"><span>2</span></li>
+      <li class="{{if isNumericKey}}registerKey{{/if}}"><span>3</span></li>
+      <li class="{{if isNumericKey}}registerKey{{/if}}"><span>4</span></li>
+      <li class="{{if isNumericKey}}registerKey{{/if}}"><span>5</span></li>
+      <li class="{{if isNumericKey}}registerKey{{/if}}"><span>6</span></li>
+      <li class="{{if isNumericKey}}registerKey{{/if}}"><span>7</span></li>
+      <li class="{{if isNumericKey}}registerKey{{/if}}"><span>8</span></li>
+      <li class="{{if isNumericKey}}registerKey{{/if}}"><span>9</span></li>
+      <li id="{{if isNumericKey}}deleteAll{{/if}}"><span>クリア</span></li>
+      <li class="{{if isNumericKey}}registerKey{{/if}}"><span>0</span></li>
+    </ul>
+  </div>
+  {{else}}
+  <div id="alpha_board">
+    <div class="word"><strong id="{{if !isNumericKey}}inputTarget{{/if}}"></strong></div>
+    <ul class="delete clearfix">
+      <li class="delete_left" id="deleteSingle"><span>1文字削除</span></li>
+      <li class="delete_right" id="{{if !isNumericKey}}deleteAll{{/if}}"><span>全削除</span></li>
+    </ul>
+    <div id="alphabet">
+      <ul class="clearfix">
+        <li class="registerKey"><span>A</span></li>
+        <li class="registerKey"><span>B</span></li>
+        <li class="registerKey"><span>C</span></li>
+        <li class="registerKey"><span>D</span></li>
+        <li class="registerKey"><span>E</span></li>
+        <li class="registerKey"><span>F</span></li>
+        <li class="registerKey"><span>G</span></li>
+        <li class="registerKey"><span>H</span></li>
+        <li class="registerKey"><span>I</span></li>
+        <li class="registerKey"><span>J</span></li>
+        <li class="registerKey"><span>K</span></li>
+        <li class="registerKey"><span>L</span></li>
+        <li class="registerKey"><span>M</span></li>
+        <li class="registerKey"><span>N</span></li>
+        <li class="registerKey"><span>O</span></li>
+        <li class="registerKey"><span>P</span></li>
+        <li class="registerKey"><span>Q</span></li>
+        <li class="registerKey"><span>R</span></li>
+        <li class="registerKey"><span>S</span></li>
+        <li class="registerKey"><span>T</span></li>
+        <li class="registerKey"><span>U</span></li>
+        <li class="registerKey"><span>V</span></li>
+        <li class="registerKey"><span>W</span></li>
+        <li class="registerKey"><span>X</span></li>
+        <li class="registerKey"><span>Y</span></li>
+        <li class="registerKey"><span>Z</span></li>
+      </ul>
+      <ul class="clearfix">
+        <li class="registerKey"><span>a</span></li>
+        <li class="registerKey"><span>b</span></li>
+        <li class="registerKey"><span>c</span></li>
+        <li class="registerKey"><span>d</span></li>
+        <li class="registerKey"><span>e</span></li>
+        <li class="registerKey"><span>f</span></li>
+        <li class="registerKey"><span>g</span></li>
+        <li class="registerKey"><span>h</span></li>
+        <li class="registerKey"><span>i</span></li>
+        <li class="registerKey"><span>j</span></li>
+        <li class="registerKey"><span>k</span></li>
+        <li class="registerKey"><span>l</span></li>
+        <li class="registerKey"><span>m</span></li>
+        <li class="registerKey"><span>n</span></li>
+        <li class="registerKey"><span>o</span></li>
+        <li class="registerKey"><span>p</span></li>
+        <li class="registerKey"><span>q</span></li>
+        <li class="registerKey"><span>r</span></li>
+        <li class="registerKey"><span>s</span></li>
+        <li class="registerKey"><span>t</span></li>
+        <li class="registerKey"><span>u</span></li>
+        <li class="registerKey"><span>v</span></li>
+        <li class="registerKey"><span>w</span></li>
+        <li class="registerKey"><span>x</span></li>
+        <li class="registerKey"><span>y</span></li>
+        <li class="registerKey"><span>z</span></li>
+      </ul>
+      <ul id="keyboard_number" class="clearfix">
+        <li class="{{if !isNumericKey}}registerKey{{/if}}"><span>1</span></li>
+        <li class="{{if !isNumericKey}}registerKey{{/if}}"><span>2</span></li>
+        <li class="{{if !isNumericKey}}registerKey{{/if}}"><span>3</span></li>
+        <li class="{{if !isNumericKey}}registerKey{{/if}}"><span>4</span></li>
+        <li class="{{if !isNumericKey}}registerKey{{/if}}"><span>5</span></li>
+        <li class="{{if !isNumericKey}}registerKey{{/if}}"><span>6</span></li>
+        <li class="{{if !isNumericKey}}registerKey{{/if}}"><span>7</span></li>
+        <li class="{{if !isNumericKey}}registerKey{{/if}}"><span>8</span></li>
+        <li class="{{if !isNumericKey}}registerKey{{/if}}"><span>9</span></li>
+        <li class="{{if !isNumericKey}}registerKey{{/if}}"><span>0</span></li>
+      </ul>
+    </div>
+  </div>
+  {{/if}}
+  <ul class="btn clearfix">
+    <li id="btnOK"><a href="javascript:void(0)" tabindex="-1">OK</a></li>
+    <li id="btnCancel"><a href="javascript:void(0)" tabindex="-1">キャンセル</a></li>
+  </ul>
+</div>
+</script>
+
+    <main role="main">
+    <div id="mainContainer">
+      <section class="loginArea">
+        <form id="loginForm" method="post" target="pctablet" action="/tohyo-ap-pctohyo-web/auth/login?cid=apA42&amp;r=6430901500806875368">
+        <!-- autocompleteが無視される対応 -->
+        <input type="password" name="dummyA" tabindex="-1" style="width: 2px; height: 2px; position: absolute; opacity: 0;">
+        <input type="password" name="dummyB" tabindex="-1" style="width: 2px; height: 2px; position: absolute; opacity: 0;">
+        <input type="hidden" name="rctoken" id="rctoken" value="" style="">
+          <script id="serverErrorMessage" type="text/x-jsrender">
+            <p class="alC attention2">{{>serverErrorMessage}}</p>
+          </script>
+          <div id="serverErrorMessageArea"></div>
+
+          <p class="alC">加入者番号・暗証番号・認証用パスワードをご入力ください。</p>
+          <table cellspacing="0" cellpadding="0">
+            <tbody><tr>
+              <th>加入者番号</th>
+              <td><input type="tel" name="memberNo" id="memberNo" autocomplete="off" maxlength="10" class="inputPass" placeholder="半角数字6～10桁" style=""></td>
+              <td><a href="javascript:void(0)" tabindex="-1"><img id="keyboardMemberNo" src="/tohyo-ap-pctohyo-web/resources/images/index/btn01_key.png?02173999" alt="ソフトウェアキーボード" width="117" height="25" class="btnOver"></a></td>
+            </tr>
+            <tr>
+              <th>暗証番号</th>
+              <td><input type="password" name="pin" id="pin" autocomplete="off" maxlength="10" class="inputPass" placeholder="半角数字4～6桁" style=""></td>
+              <td><a href="javascript:void(0)" tabindex="-1"><img id="keyboardPin" src="/tohyo-ap-pctohyo-web/resources/images/index/btn01_key.png?02173999" alt="ソフトウェアキーボード" width="117" height="25" class="btnOver"></a></td>
+            </tr>
+            <tr>
+              <th>認証用パスワード</th>
+              <td><input type="password" name="authPassword" id="authPassword" autocomplete="off" maxlength="10" class="inputPass" placeholder="半角英数字6～8桁" style=""></td>
+              <td><a href="javascript:void(0)" tabindex="-1"><img id="keyboardAuthPassword" src="/tohyo-ap-pctohyo-web/resources/images/index/btn01_key.png?02173999" alt="ソフトウェアキーボード" width="117" height="25" class="btnOver"></a></td>
+            </tr>
+          </tbody></table>
+          <div class="checkArea">
+            <p class="check">
+              <label><input type="checkbox" name="isKeepLoginInfo" id="isKeepLoginInfo" style=""><span>ログイン情報を保持する（7日間有効）</span></label>
+            </p>
+            <p>
+              <span class="attention bluemark">共有のコンピュータをお使いの場合は選択しないでください</span>
+            </p>
+          </div>
+          <div class="btnSubmit">
+            <input type="button" id="loginButton" value="ログインする" style="">
+          </div>
+          <div class="gambleMessage">
+             <ul>
+               <li>
+                 ・ 勝舟投票券の購入は20歳になってから。
+               </li>
+               <li>
+                 ・ 無理のない資金で、余裕をもってお楽しみください。
+               </li>
+               <li>
+                 ・ 勝舟投票券の購入にのめり込んでしまう等の不安のある方は<a href="https://www.motorboatracing-association.jp/info/included2.html" target="_blank">こちら</a>をご覧ください。
+              </li>
+            </ul>
+          </div>
+        <div>
+<input type="hidden" name="operationKbn" value="" style="">
+<input type="hidden" name="screenFrom" value="A604" style="">
+<input type="hidden" name="token" value="" style="">
+<input type="hidden" name="_csrf" value="c1d6b922-ce2e-4380-8ed0-35373cca94f8" style="">
+</div></form>
+      </section>
+      <!--/loginArea-->
+
+      <section class="menuArea clearfix">
+        <div class="supportBox">
+          <h2>新規会員登録・お問い合わせ</h2>
+          <div class="btn passforget">
+            <a href="https://www.boatrace.jp/owpc/pc/extra/login_about/forget.html" target="_blank">加入者番号・暗証番号・<br>認証用パスワードをお忘れの方
+            </a>
+          </div>
+          <div class="btn passnone">
+            <a href="https://www.boatrace.jp/bosyu/pc/apply/" target="_blank">新規会員登録はこちら
+            </a>
+          </div>
+          <div class="btn passnone">
+            <a href="https://register.mbrace.or.jp/kyotei/member/nyukinsetlogin" target="_blank">投票の入金限度額はこちら
+            </a>
+          </div>
+          <dl>
+            <dt>お問い合わせ先:テレボート</dt>
+            <dd class="tellnumber">
+             <img src="/tohyo-ap-pctohyo-web/resources/images/index/icon03_navi.svg?02173999" width="39" height="30">0570-05-0401
+            </dd>
+            <dd class="tellend">
+             8:00から<br>レース終了まで
+            </dd>
+          </dl>
+        </div>
+        <!--/supportBox-->
+        <div class="smartBox">
+          <h2>ボートレースに関する情報はこちら</h2>
+          <div class="btn">
+            <a href="https://www.boatrace.jp/" target="_blank">BOAT RACE オフィシャルウェブサイト</a>
+          </div>
+          <div class="btn">
+            <a href="https://www.boatrace.jp/owpc/pc/extra/tb/support/tblink/index.html" target="_blank">テレボートリンク</a>
+          </div>
+          <h2>スマートフォン投票について</h2>
+          <div class="btn">
+            <a href="https://spweb.brtb.jp/" target="_blank">スマートフォンからの投票はこちら</a>
+          </div>
+          <dl class="clearfix qrbox">
+            <dd class="qrcode columnLeft">
+              <img src="/tohyo-ap-pctohyo-web/resources/images/index/icon02_qrcode.png?02173999" width="61" height="60">
+            </dd>
+            <dd class="qraccess columnLeft">
+              こちらのQRコードからも<br>アクセスできます。
+            </dd>
+          </dl>
+        </div>
+        <!--/smartBox-->
+        <div class="infoBox">
+          <h2>本サイトについて</h2>
+          <div class="btn manual">
+            <a href="/manualDL_PC.html" target="_blank">操作マニュアル</a>
+          </div>
+          <div class="btn recommendedenvironment">
+            <a href="/tohyo-ap-pctohyo-web/help/sys/systemrequirements.html" target="help" class="btnOver window">推奨環境について</a>
+          </div>
+          <div class="btn change">
+            <a href="/tohyo-ap-pctohyo-web/changelog/changelog.html" target="changelog" class="btnOver window">サイト更新履歴</a>
+          </div>
+          <div class="btn change">
+            <a href="/tohyo-ap-pctohyo-web/policy/policy.html" target="policy" class="btnOver window">サイトポリシー</a>
+          </div>
+          <div class="btn change">
+            <a href="/tohyo-ap-pctohyo-web/privacy/privacy.html" target="privacy" class="btnOver window">プライバシーポリシー</a>
+          </div>
+          <div>
+            <span>このサイトはreCAPTCHAで保護されており、Googleの<a href="https://policies.google.com/privacy?hl=ja" target="_blank">プライバシーポリシー</a>と<a href="https://policies.google.com/terms?hl=ja" target="_blank">利用規約</a>が適用されます。</span>
+          </div>
+        </div>
+        <!--/infoBox-->
+      </section>
+      <!--/menuArea-->
+    </div>
+    <!--/mainContainer--> </main>
+    <!--/main-->
+    
+    
+    <section id="newsArea" class="newsArea">
+      <div class="inner">
+        <h2>お知らせ</h2>
+        <div class="btn newslist" id="noticeInfo">
+          <a href="javascript:void(0)">お知らせ一覧</a>
+        </div>
+        <div class="bx-wrapper" style="max-width: 960px; margin: 0px auto;"><div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 62px;"><ul class="slider" style="width: 3615%; position: relative; transition-duration: 0s; transform: translate3d(-1020px, 0px, 0px);"><li class="slide  bx-clone" style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20250403
+              </p>
+              <p class="explain">
+                <a href="https://boatcast.jp/" tabindex="-1" target="notice">YouTubeと競技情報が同時視聴可能！BOATCAST</a>
+              </p>
+            </li><li class="slide  bx-clone" style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20200428
+              </p>
+              <p class="explain">
+                <a href="https://register.mbrace.or.jp/kyotei/member/dentologin?_ga=1.264502607.1331435457.1493338561" tabindex="-1" target="notice">（電話投票会員様向け） インターネット投票利用申し込み </a>
+              </p>
+            </li><li class="slide  bx-clone" style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20160129
+              </p>
+              <p class="explain">
+                <a href="https://www.google.co.jp/chrome/browser/desktop/" tabindex="-1" target="notice">IEが旧バージョンの場合chromeブラウザもお試し下さい。ダウンロードはこちら</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20231207
+              </p>
+              <p class="explain">
+                <a href="https://www.motorboatracing-association.jp/info/included2.html" tabindex="-1" target="notice">ｷﾞｬﾝﾌﾞﾙ等依存症対策</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20200428
+              </p>
+              <p class="explain">
+                <a href="http://www.boatrace.jp/owpc/pc/site/news/2020//04/10219/" tabindex="-1" target="notice">テレボートに関する「よくある質問」</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20260317
+              </p>
+              <p class="explain">
+                <a href="https://grande5-555cp.jp/?utm_source=vote-site&amp;utm_medium=link&amp;utm_campaign=grande5_555cp_classic&amp;utm_content=vote_site_pc" tabindex="-1" target="notice">純金が当たるキャンペーン実施中♪</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20260309
+              </p>
+              <p class="explain">
+                <a href="https://tb-kumahondream.jp/5th_dream25/?utm_source=vote-site&amp;utm_medium=link&amp;utm_campaign=kumahondream2025_5th&amp;utm_content=vote_site_pc" tabindex="-1" target="notice">ｸﾏﾎﾝﾄﾞﾘｰﾑ開催中♪</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20251015
+              </p>
+              <p class="explain">
+                <a href="https://www.boatrace.jp/extent/common/bankinfo/" tabindex="-1" target="notice">即時銀行ﾒﾝﾃﾅﾝｽ情報</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                <span class="new">NEW</span>
+                
+                20260324
+              </p>
+              <p class="explain">
+                <a href="https://logoform.jp/form/5CLo/1486407" tabindex="-1" target="notice">住之江　全国地区選抜戦招待イベント</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                <span class="new">NEW</span>
+                
+                20260324
+              </p>
+              <p class="explain">
+                <a href="https://boatboy.jp/" tabindex="-1" target="notice">SG予想情報、毎日更新中！【BOATBoyWEB】</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                <span class="new">NEW</span>
+                
+                20260324
+              </p>
+              <p class="explain">
+                <a href="https://tb-yosou.jp/?utm_source=vote-site&amp;utm_medium=link&amp;utm_campaign=tb_funaken&amp;utm_content=vote_site_pc" tabindex="-1" target="notice">予想サイト「舟拳」でボートレースクラシックを予想中！</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                <span class="new">NEW</span>
+                
+                20260324
+              </p>
+              <p class="explain">
+                <a href="https://www.br-pregacha.jp/?utm_source=teleboat&amp;utm_medium=notice&amp;utm_id=pregacha2024" tabindex="-1" target="notice">毎日引ける！プレゼントガチャ開催中</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                <span class="new">NEW</span>
+                
+                20260320
+              </p>
+              <p class="explain">
+                <a href="https://amagasaki-boat.com/campaign2024/?source=6" tabindex="-1" target="notice">BR尼崎 今節は132名様にチャンス！</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                <span class="new">NEW</span>
+                
+                20260320
+              </p>
+              <p class="explain">
+                <a href="https://lets-boatrace.com/cp/2026-boatracefighter/?utm_source=google&amp;utm_medium=Referral&amp;utm_campaign=battlebeat&amp;utm_term=official_cppc" tabindex="-1" target="notice">アマギフやSFコラボグッズが当たる！</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                <span class="new">NEW</span>
+                
+                20260320
+              </p>
+              <p class="explain">
+                <a href="https://gamapo.jp/campaign/classic61" tabindex="-1" target="notice">蒲郡　SG特別キャンペーンのお知らせ！</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20260304
+              </p>
+              <p class="explain">
+                <a href="https://www.boatrace-miyajima.com/televoting.html" tabindex="-1" target="notice">宮島　総額4,140万円電投キャンペーン</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20260303
+              </p>
+              <p class="explain">
+                <a href="https://3br-kojima.jp" tabindex="-1" target="notice">児島　電投キャッシュバックキャンペーン</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20260302
+              </p>
+              <p class="explain">
+                <a href="https://omuramileclub.jp/" tabindex="-1" target="notice">【大村】　ネット投票キャンペーン3月分</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20260301
+              </p>
+              <p class="explain">
+                <a href="https://karapo.jp/rainbow/2025" tabindex="-1" target="notice">唐津 3月度・G2唐津MB大賞CP</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20260203
+              </p>
+              <p class="explain">
+                <a href="https://3br-kojima.jp" tabindex="-1" target="notice">児島　電投キャッシュバックキャンペーン</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20260114
+              </p>
+              <p class="explain">
+                <a href="https://3br-kojima.jp" tabindex="-1" target="notice">児島　電投キャッシュバックキャンペーン</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20251231
+              </p>
+              <p class="explain">
+                <a href="https://www.boatrace-fukuoka.com/dento-cp/" tabindex="-1" target="notice">福岡　電投キャンペーン（5）実施</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20251224
+              </p>
+              <p class="explain">
+                <a href="https://3br-kojima.jp" tabindex="-1" target="notice">児島　電投キャッシュバックキャンペーン</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20251211
+              </p>
+              <p class="explain">
+                <a href="https://3br-kojima.jp" tabindex="-1" target="notice">児島　電投キャッシュバックキャンペーン</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20251120
+              </p>
+              <p class="explain">
+                <a href="https://tb-yosou.jp" tabindex="-1" target="notice">「舟拳サイト」公開開始！予想NAVIがフルリニューアル！</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20250902
+              </p>
+              <p class="explain">
+                <a href="https://3br-kojima.jp" tabindex="-1" target="notice">児島　電投キャッシュバックキャンペーン</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20250803
+              </p>
+              <p class="explain">
+                <a href="https://3br-kojima.jp" tabindex="-1" target="notice">児島　電投キャッシュバックキャンペーン</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20250629
+              </p>
+              <p class="explain">
+                <a href="https://3br-kojima.jp" tabindex="-1" target="notice">児島　電投キャッシュバックキャンペーン</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20250621
+              </p>
+              <p class="explain">
+                <a href="https://www.boatrace.jp/owpc/pc/site/news/2025/06/42458/" tabindex="-1" target="notice">ネット投票は365日一年中朝8時から！</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20250613
+              </p>
+              <p class="explain">
+                <a href="https://3br-kojima.jp" tabindex="-1" target="notice">児島　電投キャッシュバックキャンペーン</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20250603
+              </p>
+              <p class="explain">
+                <a href="https://3br-kojima.jp" tabindex="-1" target="notice">児島　電投キャッシュバックキャンペーン</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20250523
+              </p>
+              <p class="explain">
+                <a href="https://3br-kojima.jp" tabindex="-1" target="notice">児島　電投キャッシュバックキャンペーン</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20250509
+              </p>
+              <p class="explain">
+                <a href="https://3br-kojima.jp" tabindex="-1" target="notice">児島　電投キャッシュバックキャンペーン</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20250501
+              </p>
+              <p class="explain">
+                <a href="https://3br-kojima.jp" tabindex="-1" target="notice">児島　電投キャッシュバックキャンペーン</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20250403
+              </p>
+              <p class="explain">
+                <a href="https://boatcast.jp/" tabindex="-1" target="notice">YouTubeと競技情報が同時視聴可能！BOATCAST</a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20200428
+              </p>
+              <p class="explain">
+                <a href="https://register.mbrace.or.jp/kyotei/member/dentologin?_ga=1.264502607.1331435457.1493338561" tabindex="-1" target="notice">（電話投票会員様向け） インターネット投票利用申し込み </a>
+              </p>
+            </li>
+          
+            <li class="slide " style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20160129
+              </p>
+              <p class="explain">
+                <a href="https://www.google.co.jp/chrome/browser/desktop/" tabindex="-1" target="notice">IEが旧バージョンの場合chromeブラウザもお試し下さい。ダウンロードはこちら</a>
+              </p>
+            </li>
+          
+        <li class="slide  bx-clone" style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20231207
+              </p>
+              <p class="explain">
+                <a href="https://www.motorboatracing-association.jp/info/included2.html" tabindex="-1" target="notice">ｷﾞｬﾝﾌﾞﾙ等依存症対策</a>
+              </p>
+            </li><li class="slide  bx-clone" style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20200428
+              </p>
+              <p class="explain">
+                <a href="http://www.boatrace.jp/owpc/pc/site/news/2020//04/10219/" tabindex="-1" target="notice">テレボートに関する「よくある質問」</a>
+              </p>
+            </li><li class="slide  bx-clone" style="float: left; list-style: none; position: relative; width: 299px;">
+              <p class="date">
+                
+                20260317
+              </p>
+              <p class="explain">
+                <a href="https://grande5-555cp.jp/?utm_source=vote-site&amp;utm_medium=link&amp;utm_campaign=grande5_555cp_classic&amp;utm_content=vote_site_pc" tabindex="-1" target="notice">純金が当たるキャンペーン実施中♪</a>
+              </p>
+            </li></ul></div><div class="bx-controls bx-has-controls-direction"><div class="bx-controls-direction"><a class="bx-prev" href="">Prev</a><a class="bx-next" href="">Next</a></div></div></div>
+      </div>
+      <!--/inner-->
+    </section>
+    
+    
+    <!--/newsArea-->
+
+  <div id="popupMain" style="display:none"></div>
+  
+
+
+
+
+
+
+
+
+
+
+<script id="noticeRender" type="text/x-jsrender">
+<div id="information">
+  <h1>お知らせ</h1>
+    <div class="area" id="noticeList">
+      <ul>{{for noticeInfoList}}
+          {{if isNew}}
+        <li class="new">
+          <span class="new">NEW</span>
+          {{else}}
+        <li>
+          {{/if}}
+          <span class="date">{{dateYMD:date}}</span>
+          <span class="explain"><a href="{{>url}}" target="notice">{{>linkName}}</a></span>
+        </li>{{/for}}
+      </ul>
+    </div>
+  <div class="btn close"><a href="javascript:void(0)" tabindex="-1" id="closeNotice">閉じる</a></div>
+</div>
+</script>
+
+  <div id="overlayProgress"></div>
+  <div id="overlay"></div>
+  <div id="overlay2"></div>
+  <!-- エラー注意喚起ポップアップで使用するテンプレート -->
+  
+
+
+
+
+
+
+
+
+
+
+<script id="error_pop" type="text/x-jsrender">
+  <div id="errorPop">
+    <h1>{{:errorTitle}}</h1>
+      <p class="errorTxt">{{:errorTxt}}</p>
+      {{if sType !== SCREEN_TYPE.ATTENTION_OK && sType !== SCREEN_TYPE.ATTENTION_OK_CANCEL
+        && sType !== SCREEN_TYPE.ATTENTION_A_B_CANCEL}}
+      <p class="errorDate">時刻：{{:errorDate}}</p>
+      <p class="errorId">ＩＤ：{{:errorId}}</p>
+      {{/if}}
+      {{if sType === SCREEN_TYPE.POPUP_OK }}
+      <div class="btn close" ><a href="javascript:void(0);" id="close" tabindex="-1">{{:buttonName}}</a></div>
+      {{else sType === SCREEN_TYPE.POPUP_NEXT }}
+      <div class="btn close"><a href="javascript:void(0);" id="nextScreen" tabindex="-1">{{:buttonName}}</a></div>
+      {{else sType === SCREEN_TYPE.POPUP_LOGOUT }}
+      <div class="btn close"><a href="javascript:void(0);" id="errorLogout" tabindex="-1">{{:buttonName}}</a></div>
+      {{else sType === SCREEN_TYPE.ATTENTION_OK }}
+      <div class="btn close"><a href="javascript:void(0);" id="ok" tabindex="-1">OK</a></div>
+      {{else sType === SCREEN_TYPE.ATTENTION_OK_CANCEL }}
+      <ul class="btn okcancel clearfix">
+        <li><a href="javascript:void(0);" id="ok" tabindex="-1">OK</a></li>
+        <li><a href="javascript:void(0);"  id="cancel" tabindex="-1">キャンセル</a></li>
+      </ul>
+      {{else sType === SCREEN_TYPE.ATTENTION_A_B_CANCEL }}
+      <ul class="btn ABcancel clearfix">
+        <li><a href="javascript:void(0);" id="selectA" tabindex="-1">{{:buttonName}}</a></li>
+        <li><a href="javascript:void(0);" id="selectB" tabindex="-1">{{:buttonName2}}</a></li>
+        <li><a href="javascript:void(0);" id="cancel" tabindex="-1">キャンセル</a></li>
+      </ul>
+      {{/if}}
+  </div>
+</script>
+
+  <!-- エラー注意喚起ポップアップで使用するタグ -->
+  <div id="popup" class="popup"></div>
+
+    <footer role="contentinfo">
+      <div class="inner clearfix">
+        <p class="logo">
+          <img src="/tohyo-ap-pctohyo-web/resources/images/common/logo02.png?02173999" width="99" height="18" alt="BOAT RACE">
+        </p>
+        <small>COPYRIGHT © BOAT RACE OFFICIAL WEB ALL RIGHTS RESERVED.</small>
+        <p class="contactId" id="screenId">A604-A42-03251126</p>
+      </div>
+    </footer>
+    <!--/footer-->
+  </div>
+  <!--/wrapper-->
+
+<div><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe title="reCAPTCHA" width="256" height="60" role="presentation" name="a-81l34qxgf1pe" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="https://www.google.com/recaptcha/enterprise/anchor?ar=1&amp;k=6LcTx8ofAAAAAFXyEqQxzspb5Mxr-MoC3K26gkdj&amp;co=aHR0cHM6Ly9pYi5tYnJhY2Uub3IuanA6NDQz&amp;hl=ja&amp;v=qm3PSRIx10pekcnS9DjGnjPW&amp;size=invisible&amp;anchor-ms=20000&amp;execute-ms=30000&amp;cb=yj6hdsfpnrje"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response-100000" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;"></iframe></div></body></html>
