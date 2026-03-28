@@ -2,15 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, ListTodo, Radio, Sparkles, Image as ImageIcon, BookHeart } from "lucide-react";
+import { Home, ListTodo, Radio, Sparkles, Wind, BookHeart } from "lucide-react";
 
 const NAV_ITEMS = [
-  { href: "/dashboard", icon: Home, label: "ホーム", color: "text-primary-orange" },
-  { href: "/wishes", icon: ListTodo, label: "オーダー", color: "text-primary-yellow" },
-  { href: "/oracle", icon: Sparkles, label: "Oracle", color: "text-primary-pink" },
-  { href: "/frequencies", icon: Radio, label: "周波数", color: "text-primary-orange" },
-  { href: "/journal", icon: BookHeart, label: "日記", color: "text-primary-pink" },
-  { href: "/vision", icon: ImageIcon, label: "Vision", color: "text-primary-yellow" },
+  { href: "/dashboard",  icon: Home,      label: "ホーム",   color: "text-primary-orange" },
+  { href: "/wishes",     icon: ListTodo,  label: "オーダー", color: "text-primary-yellow" },
+  { href: "/oracle",     icon: Sparkles,  label: "Oracle",   color: "text-primary-pink"   },
+  { href: "/frequencies",icon: Radio,     label: "周波数",   color: "text-primary-orange" },
+  { href: "/journal",    icon: BookHeart, label: "日記",     color: "text-primary-pink"   },
+  { href: "/meditation", icon: Wind,      label: "瞑想",     color: "text-primary-yellow" },
 ];
 
 export function BottomNav() {

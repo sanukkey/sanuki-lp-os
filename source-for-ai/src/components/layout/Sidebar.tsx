@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Home, ListTodo, Radio, Sparkles, Image as ImageIcon, BookHeart, Zap } from "lucide-react";
+import { Home, ListTodo, Radio, Sparkles, Image as ImageIcon, BookHeart, Zap, BarChart2, Wind } from "lucide-react";
 
 export function Sidebar() {
   return (
@@ -33,6 +33,14 @@ export function Sidebar() {
         <Link href="/vision" className="flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:bg-orange-50 dark:hover:bg-orange-950/30 text-foreground transition-colors">
           <ImageIcon className="h-5 w-5 text-primary-yellow" />
           <span className="font-medium">Scenic Vision</span>
+        </Link>
+        <Link href="/scale" className="flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:bg-orange-50 dark:hover:bg-orange-950/30 text-foreground transition-colors">
+          <BarChart2 className="h-5 w-5 text-primary-pink" />
+          <span className="font-medium">感情スケール</span>
+        </Link>
+        <Link href="/meditation" className="flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:bg-orange-50 dark:hover:bg-orange-950/30 text-foreground transition-colors">
+          <Wind className="h-5 w-5 text-primary-yellow" />
+          <span className="font-medium">瞑想モード</span>
         </Link>
       </nav>
 
